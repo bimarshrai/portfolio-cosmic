@@ -112,7 +112,7 @@ function App() {
   const [lightbox, setLightbox] = useState<(typeof explorations)[number] | null>(null)
   const roles = useMemo(() => ['Creative', 'Fullstack', 'Founder', 'Scholar'], [])
   const explorationRef = useRef<HTMLElement>(null)
-  const parallaxRefs = useRef<HTMLDivElement[]>([])
+  const parallaxRefs = useRef<HTMLButtonElement[]>([])
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 100)
@@ -130,7 +130,7 @@ function App() {
       gsap.from('.name-reveal', { opacity: 0, y: 50, duration: 1.2, delay: 0.1, ease: 'power3.out' })
       gsap.from('.blur-in', { opacity: 0, filter: 'blur(10px)', y: 20, duration: 1, delay: 0.3, stagger: 0.1, ease: 'power3.out' })
       gsap.utils.toArray<HTMLElement>('.reveal-on-scroll').forEach((el) => {
-        gsap.from(el, { opacity: 0, y: 30, duration: 1, ease: 'power3.out', scrollTrigger: { trigger: el, start: 'top 82%', once: true, margin: '-100px' } })
+        gsap.from(el, { opacity: 0, y: 30, duration: 1, ease: 'power3.out', scrollTrigger: { trigger: el, start: 'top 82%', once: true } })
       })
 
       if (explorationRef.current) {
